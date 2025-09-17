@@ -90,17 +90,18 @@ export default function CourseGrid({ onStartTest }: CourseGridProps) {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="grid-courses">
+        <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto" data-testid="grid-courses">
           {mockCourses.map((course) => (
-            <CourseCard
-              key={course.id}
-              id={course.id}
-              name={course.name}
-              description={course.description}
-              icon={course.icon}
-              stats={course.stats}
-              onStartTest={onStartTest}
-            />
+            <div key={course.id} className="w-full sm:w-80 flex-shrink-0">
+              <CourseCard
+                id={course.id}
+                name={course.name}
+                description={course.description}
+                icon={course.icon}
+                stats={course.stats}
+                onStartTest={onStartTest}
+              />
+            </div>
           ))}
         </div>
       </div>
