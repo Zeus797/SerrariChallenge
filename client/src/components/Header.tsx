@@ -8,7 +8,7 @@ import {
 import { Moon, Sun, ChevronDown } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { useLocation } from 'wouter';
-import serrariLogo from '@assets/serrari logo 2 _1758729670733.png';
+import serrariLogo from '@assets/Serrari Logo Text Free_1758731330809.jpeg';
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();

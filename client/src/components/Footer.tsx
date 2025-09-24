@@ -1,6 +1,7 @@
-import { GraduationCap, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLocation } from 'wouter';
+import serrariLogo from '@assets/Serrari Logo Text Free_1758731330809.jpeg';
 
 export default function Footer() {
   const [, setLocation] = useLocation();
@@ -19,8 +20,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <GraduationCap className="h-6 w-6 text-primary" />
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src={serrariLogo} 
+                alt="SerrariEd Logo" 
+                className="h-8 w-auto"
+                data-testid="img-serrari-logo-footer"
+              />
               <span className="text-lg font-bold text-foreground">SerrariEd</span>
             </div>
             <p className="text-sm text-muted-foreground">
