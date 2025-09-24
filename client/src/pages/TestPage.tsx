@@ -3,6 +3,7 @@ import { useRoute, useLocation } from 'wouter';
 import Header from '@/components/Header';
 import TestQuestion from '@/components/TestQuestion';
 import TestResults from '@/components/TestResults';
+import EmailCaptureModal from '@/components/EmailCaptureModal';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { TestSession, TestQuestion as TestQuestionType } from '@shared/schema';
 import { Button } from '@/components/ui/button';
@@ -818,6 +819,8 @@ export default function TestPage() {
   const [, setLocation] = useLocation();
   const [testSession, setTestSession] = useState<TestSession | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [userEmail, setUserEmail] = useState<string>('');
 
   const courseId = params?.courseId || '';
   const courseName = courseNames[courseId] || courseId.toUpperCase();
@@ -869,8 +872,9 @@ export default function TestPage() {
         ...testSession,
         answers: updatedAnswers,
         score: newScore,
-        completed: true
+        completed: false // Don't mark as completed yet, show email modal first
       });
+      setShowEmailModal(true);
     } else {
       setTestSession({
         ...testSession,
@@ -881,8 +885,22 @@ export default function TestPage() {
     }
   };
 
+  const handleEmailSubmit = (email: string) => {
+    setUserEmail(email);
+    setShowEmailModal(false);
+    
+    if (testSession) {
+      setTestSession({
+        ...testSession,
+        completed: true
+      });
+    }
+  };
+
   const handleRetakeTest = () => {
     console.log('Retaking test for:', courseId);
+    setShowEmailModal(false);
+    setUserEmail('');
     initializeTest(courseId);
   };
 
@@ -979,6 +997,14 @@ export default function TestPage() {
             )}
           </div>
         </main>
+        
+        <EmailCaptureModal
+          isOpen={showEmailModal}
+          onEmailSubmit={handleEmailSubmit}
+          courseName={courseName}
+          score={testSession.score}
+          totalQuestions={testSession.questions.length}
+        />
       </div>
     </ThemeProvider>
   );
