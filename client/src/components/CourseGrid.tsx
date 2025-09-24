@@ -7,6 +7,7 @@ import hesiIcon from '@assets/generated_images/HESI_A2_course_icon_95b7f3f6.png'
 import teasIcon from '@assets/generated_images/ATI_TEAS_7_icon_1b8eb743.png';
 import nclexRnIcon from '@assets/generated_images/NCLEX_RN_icon_9dbce4c8.png';
 import nclexPnIcon from '@assets/generated_images/NCLEX_PN_icon_23325424.png';
+import hesiExitIcon from '@assets/stock_images/hesi_exit_nursing_ex_351ed589.jpg';
 
 interface CourseGridProps {
   onStartTest: (courseId: string) => void;
@@ -72,6 +73,18 @@ const mockCourses = [
       avgTime: '13 min',
       difficulty: 'Intermediate' as const,
       participants: 11463
+    }
+  },
+  {
+    id: 'hesi-exit',
+    name: 'HESI EXIT',
+    description: 'HESI Exit Examination for nursing students preparing for NCLEX with comprehensive nursing knowledge and critical thinking skills.',
+    icon: hesiExitIcon,
+    stats: {
+      questions: 10,
+      avgTime: '18 min',
+      difficulty: 'Advanced' as const,
+      participants: 9248
     }
   }
 ];

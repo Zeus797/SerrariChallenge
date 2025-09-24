@@ -1,0 +1,14 @@
+Include HESI EXIT as a course and challenge test as part of the course list
+Ensure each of challenge tests for each course have 10 multiple choice format questions and do research to ensure each of the questions are actual Mock exam questions and detailed explanations based on actual course work for each of the courses. 
+For each of the questions, do not autoadvance to the next question after correct answer and explanation reveal, instead include a “Next” question to proceed to the next question.
+After the 10th question for each of the courses, before going to results, include an email grab pop up with the results and feedback screen blurred in the background, for users to insert their email to view results but in a compelling way so that they don’t drop off at this point.
+For each of the Performance summary screens under “Study recommendations” we want it to say something like “
+“Based on your performance, we recommend our [Course Name] Complete Study Package
+Our comprehensive study materials are designed to help you master the concepts and excel in your [Course Name]. Get detailed explanations, practice questions, and study strategies from expert educators.” and have a button that says “Explore Study Materials” that links to the following SerrariEd special course offer page under this Study recommendations card. Here are the links to the Special course offers : ACCA: https://learn.serrarigroup.com/acca-exam-prep-special-offer/ , HESI A2: https://learn.serrarigroup.com/hesi-a2-special-offer/ , ATI TEAS 7: https://learn.serrarigroup.com/ati-teas-7-special-offer/ , HESI Exit: https://learn.serrarigroup.com/hesi-exit-special-offer/ , NCLEX RN: https://learn.serrarigroup.com/nclex-special-offer/ , NCLEX PN: https://learn.serrarigroup.com/nclex-pn-special-offer/ .
+Have a “Return to homepage” button at the bottom of the results screen so that users can navigate back to the landing page. 
+In the menu bar at the top of the landing page screen, make the “Courses” button a drop down with all the courses listed that links to each of the tests. 
+The About button in the. menu bar should link to the “About” page on the serrari website: https://learn.serrarigroup.com/about-us/
+The Resources list in the footer should link to the following destinations:
+Study guides: https://learn.serrarigroup.com/
+Practice Tests: https://learn.serrarigroup.com/
+Video Courses: https://www.youtube.com/@SerrariGroup
