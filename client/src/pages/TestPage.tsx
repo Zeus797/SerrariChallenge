@@ -674,15 +674,15 @@ const mockQuestions: Record<string, TestQuestionType[]> = {
   'hesi-exit': [
     {
       id: 'hesi-exit-q1',
-      question: 'A female client presents in the emergency department and tells the nurse that she was raped last night. Which question is most important for the nurse to ask?',
+      question: 'A client arrives at the emergency department with chest pain and shortness of breath. Which assessment should the nurse prioritize first?',
       options: [
-        'Has she taken a bath since the rape occurred?',
-        'Is the place where she lives a safe place?',
-        'Does she know the person who raped her?',
-        'Did she report the rape to the police department?'
+        'Obtain a complete health history',
+        'Assess airway, breathing, and circulation (ABCs)',
+        'Start an IV line for medication administration',
+        'Get a 12-lead electrocardiogram (ECG)'
       ],
-      correctAnswer: 0,
-      explanation: 'Preserving evidence is critical for forensic examination. Bathing, douching, or changing clothes can destroy important evidence needed for prosecution and medical evaluation.',
+      correctAnswer: 1,
+      explanation: 'Using the ABC priority framework, assessing airway, breathing, and circulation takes precedence in emergency situations. This ensures the client\'s immediate life-threatening conditions are identified and addressed first.',
       topic: 'Emergency Nursing'
     },
     {
