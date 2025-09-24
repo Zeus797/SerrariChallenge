@@ -66,7 +66,7 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span data-testid="text-contact-email">learn@serraried.com</span>
+                <span data-testid="text-contact-email">learn@serrarigroup.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
