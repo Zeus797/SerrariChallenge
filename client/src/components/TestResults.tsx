@@ -103,7 +103,7 @@ export default function TestResults({
 
   const handleExploreStudyPlans = () => {
     const url = getStudyPlanUrl(courseId);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
