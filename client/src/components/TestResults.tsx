@@ -30,7 +30,7 @@ interface TestResultsProps {
   }>;
   onRetakeTest: () => void;
   onShareResults: (shareData: any) => void;
-  onViewTestPrep: () => void;
+  onReturnHome: () => void;
 }
 
 export default function TestResults({
@@ -41,7 +41,7 @@ export default function TestResults({
   answers,
   onRetakeTest,
   onShareResults,
-  onViewTestPrep
+  onReturnHome
 }: TestResultsProps) {
   const percentage = Math.round((score / totalQuestions) * 100);
   
@@ -88,9 +88,22 @@ export default function TestResults({
     onRetakeTest();
   };
 
-  const handleViewPrep = () => {
-    console.log('Viewing test prep for:', courseName);
-    onViewTestPrep();
+  // Course-specific study plan URLs
+  const getStudyPlanUrl = (courseId: string) => {
+    const urls: Record<string, string> = {
+      'acca': 'https://learn.serrarigroup.com/acca-exam-prep-special-offer/',
+      'hesi-a2': 'https://learn.serrarigroup.com/hesi-a2-special-offer/',
+      'ati-teas': 'https://learn.serrarigroup.com/ati-teas-7-special-offer/',
+      'hesi-exit': 'https://learn.serrarigroup.com/hesi-exit-special-offer/',
+      'nclex-rn': 'https://learn.serrarigroup.com/nclex-special-offer/',
+      'nclex-pn': 'https://learn.serrarigroup.com/nclex-pn-special-offer/'
+    };
+    return urls[courseId] || 'https://learn.serrarigroup.com/';
+  };
+
+  const handleExploreStudyPlans = () => {
+    const url = getStudyPlanUrl(courseId);
+    window.open(url, '_blank');
   };
 
   return (
@@ -135,10 +148,6 @@ export default function TestResults({
             <Button onClick={handleShare} variant="outline" data-testid="button-share-results">
               <Share2 className="mr-2 h-4 w-4" />
               Share Results
-            </Button>
-            <Button onClick={handleViewPrep} data-testid="button-view-test-prep">
-              <BookOpen className="mr-2 h-4 w-4" />
-              View Test Prep
             </Button>
           </div>
         </CardContent>
@@ -198,19 +207,43 @@ export default function TestResults({
                   ))}
                 </div>
                 <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                  <p className="text-sm">
-                    <strong>Recommendation:</strong> Consider reviewing these topics with our comprehensive test prep materials 
-                    to improve your understanding and boost your score.
+                  <p className="text-sm mb-3">
+                    Based on your performance, we recommend our <strong>{courseName} Complete Study Package</strong>.
+                    Our comprehensive study materials are designed to help you master the concepts and excel in your {courseName}. 
+                    Get detailed explanations, practice questions, and study strategies from expert educators.
                   </p>
+                  <Button 
+                    onClick={handleExploreStudyPlans} 
+                    className="w-full"
+                    data-testid="button-explore-study-plans"
+                  >
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Explore Study Materials
+                  </Button>
                 </div>
               </div>
             ) : (
-              <div className="text-center py-4">
+              <div className="text-center py-4 space-y-4">
                 <CheckCircle className="h-12 w-12 text-chart-2 mx-auto mb-2" />
-                <p className="text-sm">
+                <p className="text-sm mb-3">
                   Excellent work! You performed well across all topics.
                   Continue practicing to maintain your strong knowledge base.
                 </p>
+                <div className="p-4 bg-muted/50 rounded-lg">
+                  <p className="text-sm mb-3">
+                    Based on your performance, we recommend our <strong>{courseName} Complete Study Package</strong>.
+                    Our comprehensive study materials are designed to help you master the concepts and excel in your {courseName}. 
+                    Get detailed explanations, practice questions, and study strategies from expert educators.
+                  </p>
+                  <Button 
+                    onClick={handleExploreStudyPlans} 
+                    className="w-full"
+                    data-testid="button-explore-study-plans"
+                  >
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Explore Study Materials
+                  </Button>
+                </div>
               </div>
             )}
           </CardContent>
@@ -265,6 +298,18 @@ export default function TestResults({
           </div>
         </CardContent>
       </Card>
+
+      {/* Return to Homepage */}
+      <div className="text-center pt-6">
+        <Button
+          onClick={onReturnHome}
+          variant="outline"
+          size="lg"
+          data-testid="button-return-home"
+        >
+          Return to Homepage
+        </Button>
+      </div>
     </div>
   );
 }

@@ -910,13 +910,7 @@ export default function TestPage() {
     alert('Sharing functionality will be implemented in the full version!');
   };
 
-  const handleViewTestPrep = () => {
-    console.log('Viewing test prep for:', courseName);
-    // todo: implement test prep navigation
-    alert('Test prep packages will be available in the full version!');
-  };
-
-  const handleBackToHome = () => {
+  const handleReturnHome = () => {
     setLocation('/');
   };
 
@@ -947,7 +941,7 @@ export default function TestPage() {
                 <p className="text-muted-foreground mb-4">
                   Sorry, the test for {courseName} is not available yet.
                 </p>
-                <Button onClick={handleBackToHome}>
+                <Button onClick={handleReturnHome}>
                   Back to Home
                 </Button>
               </CardContent>
@@ -992,7 +986,7 @@ export default function TestPage() {
                 })}
                 onRetakeTest={handleRetakeTest}
                 onShareResults={handleShareResults}
-                onViewTestPrep={handleViewTestPrep}
+                onReturnHome={handleReturnHome}
               />
             )}
           </div>
