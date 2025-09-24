@@ -61,10 +61,14 @@ export default function TestQuestion({
       const isCorrect = answerIndex === question.correctAnswer;
       setShowResult(true);
       console.log(`Question ${questionNumber} submitted: ${isCorrect ? 'Correct' : 'Incorrect'}`);
-      
-      setTimeout(() => {
-        onAnswerSubmit(question.id, answerIndex, isCorrect);
-      }, 2000); // Show result for 2 seconds before moving to next
+    }
+  };
+
+  const handleNext = () => {
+    if (showResult) {
+      const answerIndex = selectedAnswer !== null ? selectedAnswer : -1;
+      const isCorrect = answerIndex === question.correctAnswer;
+      onAnswerSubmit(question.id, answerIndex, isCorrect);
     }
   };
 
@@ -162,7 +166,7 @@ export default function TestQuestion({
             </div>
           )}
           
-          {!showResult && (
+          {!showResult ? (
             <Button
               onClick={handleSubmit}
               disabled={selectedAnswer === null}
@@ -170,6 +174,14 @@ export default function TestQuestion({
               data-testid={`button-submit-answer-${question.id}`}
             >
               Submit Answer
+            </Button>
+          ) : (
+            <Button
+              onClick={handleNext}
+              className="w-full"
+              data-testid={`button-next-question-${question.id}`}
+            >
+              {questionNumber === totalQuestions ? 'View Results' : 'Next Question'}
             </Button>
           )}
         </CardContent>
