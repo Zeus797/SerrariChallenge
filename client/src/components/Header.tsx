@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   const handleAboutClick = () => {
-    window.open('https://learn.serrarigroup.com/about-us/', '_blank');
+    window.open('https://learn.serrarigroup.com/about-us/', '_blank', 'noopener,noreferrer');
   };
 
   return (
