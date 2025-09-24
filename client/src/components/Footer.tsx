@@ -1,7 +1,18 @@
 import { GraduationCap, Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLocation } from 'wouter';
 
 export default function Footer() {
+  const [, setLocation] = useLocation();
+
+  const handleCourseClick = (courseId: string) => {
+    setLocation(`/test/${courseId}`);
+  };
+
+  const handleResourceClick = (url: string) => {
+    window.open(url, '_blank');
+  };
+
   return (
     <footer className="bg-card border-t">
       <div className="container py-12">
@@ -22,11 +33,12 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Test Prep Courses</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-acca-footer">ACCA Preparation</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-hesi-footer">HESI A2 Prep</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-teas-footer">ATI TEAS 7</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-nclex-rn-footer">NCLEX RN</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-nclex-pn-footer">NCLEX PN</Button></li>
+              <li><Button onClick={() => handleCourseClick('acca')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-acca-footer">ACCA Preparation</Button></li>
+              <li><Button onClick={() => handleCourseClick('hesi-a2')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-hesi-footer">HESI A2 Prep</Button></li>
+              <li><Button onClick={() => handleCourseClick('ati-teas')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-teas-footer">ATI TEAS 7</Button></li>
+              <li><Button onClick={() => handleCourseClick('nclex-rn')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-nclex-rn-footer">NCLEX RN</Button></li>
+              <li><Button onClick={() => handleCourseClick('nclex-pn')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-nclex-pn-footer">NCLEX PN</Button></li>
+              <li><Button onClick={() => handleCourseClick('hesi-exit')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-hesi-exit-footer">HESI EXIT</Button></li>
             </ul>
           </div>
           
@@ -34,11 +46,11 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-study-guides">Study Guides</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-practice-tests">Practice Tests</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-video-courses">Video Courses</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-flashcards">Flashcards</Button></li>
-              <li><Button variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-mobile-app">Mobile App</Button></li>
+              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/study-guides/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-study-guides">Study Guides</Button></li>
+              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/practice-tests/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-practice-tests">Practice Tests</Button></li>
+              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/video-courses/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-video-courses">Video Courses</Button></li>
+              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/flashcards/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-flashcards">Flashcards</Button></li>
+              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/mobile-app/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-mobile-app">Mobile App</Button></li>
             </ul>
           </div>
           

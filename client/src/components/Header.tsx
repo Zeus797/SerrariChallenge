@@ -5,9 +5,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Moon, Sun, GraduationCap, ChevronDown } from 'lucide-react';
+import { Moon, Sun, ChevronDown } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { useLocation } from 'wouter';
+import serrariLogo from '@assets/serrari logo 2 _1758729670733.png';
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -33,8 +34,13 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <GraduationCap className="h-8 w-8 text-primary" />
+        <div className="flex items-center space-x-3">
+          <img 
+            src={serrariLogo} 
+            alt="SerrariEd Logo" 
+            className="h-12 w-auto"
+            data-testid="img-serrari-logo"
+          />
           <div className="flex flex-col">
             <span className="text-xl font-bold text-foreground" data-testid="text-brand-name">SerrariEd</span>
             <span className="text-xs text-muted-foreground">Professional Test Prep</span>
