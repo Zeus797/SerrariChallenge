@@ -107,22 +107,22 @@ export default function TestResults({
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 px-4">
       {/* Overall Score Card */}
       <Card className="text-center">
         <CardHeader>
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-3 sm:mb-4">
             <div className="relative">
-              <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
-                <Trophy className="h-12 w-12 text-primary" />
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-primary/10 flex items-center justify-center">
+                <Trophy className="h-10 w-10 sm:h-12 sm:w-12 text-primary" />
               </div>
             </div>
           </div>
-          <CardTitle className="text-2xl mb-2" data-testid="text-results-title">
+          <CardTitle className="text-xl sm:text-2xl mb-2 px-2" data-testid="text-results-title">
             {courseName} Challenge Test Results
           </CardTitle>
           <Badge 
-            className={`text-lg px-4 py-2 ${performance.bgColor} ${performance.color} border-0`}
+            className={`text-sm sm:text-lg px-3 sm:px-4 py-1 sm:py-2 ${performance.bgColor} ${performance.color} border-0`}
             data-testid="badge-performance-level"
           >
             {performance.level}
@@ -130,23 +130,23 @@ export default function TestResults({
         </CardHeader>
         
         <CardContent>
-          <div className="mb-6">
-            <div className="text-6xl font-bold text-primary mb-2" data-testid="text-score-percentage">
+          <div className="mb-4 sm:mb-6">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-2" data-testid="text-score-percentage">
               {percentage}%
             </div>
-            <div className="text-muted-foreground" data-testid="text-score-fraction">
+            <div className="text-sm sm:text-base text-muted-foreground" data-testid="text-score-fraction">
               {score} out of {totalQuestions} correct
             </div>
-            <Progress value={percentage} className="mt-4 h-3" data-testid="progress-score" />
+            <Progress value={percentage} className="mt-3 sm:mt-4 h-2 sm:h-3" data-testid="progress-score" />
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={handleRetake} variant="outline" data-testid="button-retake-test">
-              <RefreshCw className="mr-2 h-4 w-4" />
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Button onClick={handleRetake} variant="outline" className="text-sm sm:text-base" data-testid="button-retake-test">
+              <RefreshCw className="mr-2 h-3 sm:h-4 w-3 sm:w-4" />
               Retake Test
             </Button>
-            <Button onClick={handleShare} variant="outline" data-testid="button-share-results">
-              <Share2 className="mr-2 h-4 w-4" />
+            <Button onClick={handleShare} variant="outline" className="text-sm sm:text-base" data-testid="button-share-results">
+              <Share2 className="mr-2 h-3 sm:h-4 w-3 sm:w-4" />
               Share Results
             </Button>
           </div>
@@ -258,34 +258,34 @@ export default function TestResults({
         <CardContent>
           <div className="space-y-4">
             {answers.map((answer, index) => (
-              <div key={answer.questionId} className="border rounded-lg p-4">
-                <div className="flex items-start justify-between mb-2">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm font-medium">Question {index + 1}</span>
+              <div key={answer.questionId} className="border rounded-lg p-3 sm:p-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between mb-2">
+                  <div className="flex items-center flex-wrap gap-2">
+                    <span className="text-xs sm:text-sm font-medium">Question {index + 1}</span>
                     <Badge variant="secondary" className="text-xs">
                       {answer.topic}
                     </Badge>
                   </div>
                   <div className="flex items-center">
                     {answer.correct ? (
-                      <CheckCircle className="h-5 w-5 text-chart-2" data-testid={`icon-correct-${index}`} />
+                      <CheckCircle className="h-4 sm:h-5 w-4 sm:w-5 text-chart-2" data-testid={`icon-correct-${index}`} />
                     ) : (
-                      <XCircle className="h-5 w-5 text-destructive" data-testid={`icon-incorrect-${index}`} />
+                      <XCircle className="h-4 sm:h-5 w-4 sm:w-5 text-destructive" data-testid={`icon-incorrect-${index}`} />
                     )}
                   </div>
                 </div>
-                <p className="text-sm mb-2" data-testid={`text-question-review-${index}`}>
+                <p className="text-xs sm:text-sm mb-2" data-testid={`text-question-review-${index}`}>
                   {answer.question}
                 </p>
                 <div className="text-xs space-y-1">
-                  <p>
+                  <p className="break-words">
                     <strong>Your answer:</strong> 
                     <span className={answer.correct ? 'text-chart-2' : 'text-destructive'}>
                       {answer.selectedAnswer >= 0 ? answer.options[answer.selectedAnswer] : 'No answer selected'}
                     </span>
                   </p>
                   {!answer.correct && (
-                    <p>
+                    <p className="break-words">
                       <strong>Correct answer:</strong> 
                       <span className="text-chart-2">
                         {answer.options[answer.correctAnswer]}

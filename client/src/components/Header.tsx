@@ -33,32 +33,33 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center space-x-3">
+      <div className="container flex h-16 items-center justify-between px-4">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <img 
             src={serrariLogo} 
             alt="SerrariEd Logo" 
-            className="h-12 w-auto"
+            className="h-8 sm:h-10 md:h-12 w-auto"
             data-testid="img-serrari-logo"
           />
           <button 
             onClick={() => setLocation('/')}
             className="flex flex-col hover:opacity-80 transition-opacity cursor-pointer"
           >
-            <span className="text-xl font-bold text-foreground" data-testid="text-brand-name">SerrariEd</span>
-            <span className="text-xs text-muted-foreground">Professional Test Prep</span>
+            <span className="text-base sm:text-lg md:text-xl font-bold text-foreground" data-testid="text-brand-name">SerrariEd</span>
+            <span className="hidden sm:block text-xs text-muted-foreground">Professional Test Prep</span>
           </button>
         </div>
         
-        <nav className="flex items-center space-x-6">
+        <nav className="flex items-center space-x-1 sm:space-x-2 md:space-x-4 lg:space-x-6">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="text-sm font-medium"
+                className="text-xs sm:text-sm font-medium px-2 sm:px-3"
                 data-testid="dropdown-courses"
               >
-                Courses
+                <span className="hidden sm:inline">Courses</span>
+                <span className="sm:hidden">Tests</span>
                 <ChevronDown className="ml-1 h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
@@ -80,7 +81,7 @@ export default function Header() {
           </DropdownMenu>
           <Button
             variant="ghost"
-            className="text-sm font-medium"
+            className="hidden md:flex text-sm font-medium"
             onClick={handleAboutClick}
             data-testid="link-about"
           >
@@ -88,7 +89,7 @@ export default function Header() {
           </Button>
           <Button
             variant="ghost"
-            className="text-sm font-medium"
+            className="hidden sm:flex text-sm font-medium px-2 sm:px-3"
             onClick={() => window.location.href = 'mailto:learn@serrarigroup.com'}
             data-testid="link-contact"
           >

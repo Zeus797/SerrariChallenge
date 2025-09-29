@@ -16,20 +16,20 @@ export default function Footer() {
 
   return (
     <footer className="bg-card border-t">
-      <div className="container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container py-8 sm:py-12 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
-          <div>
-            <div className="flex items-center space-x-3 mb-4">
+          <div className="sm:col-span-2 md:col-span-1">
+            <div className="flex items-center space-x-2 sm:space-x-3 mb-4">
               <img 
                 src={serrariLogo} 
                 alt="SerrariEd Logo" 
-                className="h-8 w-auto"
+                className="h-6 sm:h-8 w-auto"
                 data-testid="img-serrari-logo-footer"
               />
-              <span className="text-lg font-bold text-foreground">SerrariEd</span>
+              <span className="text-base sm:text-lg font-bold text-foreground">SerrariEd</span>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Empowering professionals with comprehensive test preparation 
               and practice materials for career advancement.
             </p>
@@ -75,18 +75,18 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground" data-testid="text-copyright">
+        <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs sm:text-sm text-muted-foreground text-center md:text-left" data-testid="text-copyright">
             © 2024 SerrariEd. All rights reserved.
           </p>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <Button variant="ghost" className="text-sm text-muted-foreground p-0 h-auto" data-testid="link-privacy">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <Button variant="ghost" className="text-xs sm:text-sm text-muted-foreground p-0 h-auto" data-testid="link-privacy">
               Privacy Policy
             </Button>
-            <Button variant="ghost" className="text-sm text-muted-foreground p-0 h-auto" data-testid="link-terms">
+            <Button variant="ghost" className="text-xs sm:text-sm text-muted-foreground p-0 h-auto" data-testid="link-terms">
               Terms of Service
             </Button>
-            <Button variant="ghost" className="text-sm text-muted-foreground p-0 h-auto" data-testid="link-support">
+            <Button variant="ghost" className="text-xs sm:text-sm text-muted-foreground p-0 h-auto" data-testid="link-support">
               Support
             </Button>
           </div>

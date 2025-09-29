@@ -107,17 +107,17 @@ export default function TestQuestion({
   const progressPercentage = (questionNumber / totalQuestions) * 100;
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto px-4">
       {/* Progress Bar */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-muted-foreground" data-testid="text-question-progress">
+          <span className="text-xs sm:text-sm font-medium text-muted-foreground" data-testid="text-question-progress">
             Question {questionNumber} of {totalQuestions}
           </span>
           <div className="flex items-center space-x-2">
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <Clock className="h-3 sm:h-4 w-3 sm:w-4 text-muted-foreground" />
             <span 
-              className={`text-sm font-medium ${timeLeft <= 10 ? 'text-destructive' : 'text-muted-foreground'}`}
+              className={`text-xs sm:text-sm font-medium ${timeLeft <= 10 ? 'text-destructive' : 'text-muted-foreground'}`}
               data-testid="text-timer"
             >
               {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
@@ -134,22 +134,22 @@ export default function TestQuestion({
               {question.topic}
             </Badge>
           </div>
-          <CardTitle className="text-xl leading-relaxed" data-testid={`text-question-${question.id}`}>
+          <CardTitle className="text-base sm:text-lg md:text-xl leading-relaxed" data-testid={`text-question-${question.id}`}>
             {question.question}
           </CardTitle>
         </CardHeader>
         
         <CardContent>
-          <div className="space-y-3 mb-6">
+          <div className="space-y-2 sm:space-y-3 mb-6">
             {question.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswerSelect(index)}
                 disabled={showResult}
-                className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 flex items-center justify-between ${getOptionStyle(index)}`}
+                className={`w-full p-3 sm:p-4 text-sm sm:text-base text-left rounded-lg border-2 transition-all duration-200 flex items-center justify-between ${getOptionStyle(index)}`}
                 data-testid={`button-option-${index}-${question.id}`}
               >
-                <span className="flex-1">{option}</span>
+                <span className="flex-1 pr-2">{option}</span>
                 {getOptionIcon(index)}
               </button>
             ))}

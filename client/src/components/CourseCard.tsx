@@ -63,21 +63,21 @@ export default function CourseCard({ id, name, description, icon, stats, onStart
           {description}
         </CardDescription>
         
-        <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 text-sm">
           <div className="flex items-center space-x-2">
-            <Target className="h-4 w-4 text-muted-foreground" />
+            <Target className="h-4 w-4 text-muted-foreground flex-shrink-0" />
             <span className="text-muted-foreground" data-testid={`text-questions-${id}`}>
               {stats.questions} Questions
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <Clock className="h-4 w-4 text-muted-foreground flex-shrink-0" />
             <span className="text-muted-foreground" data-testid={`text-time-${id}`}>
               {stats.avgTime}
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <Users className="h-4 w-4 text-muted-foreground flex-shrink-0" />
             <span className="text-muted-foreground" data-testid={`text-participants-${id}`}>
               {stats.participants.toLocaleString()}
             </span>
