@@ -41,10 +41,13 @@ export default function Header() {
             className="h-12 w-auto"
             data-testid="img-serrari-logo"
           />
-          <div className="flex flex-col">
+          <button 
+            onClick={() => setLocation('/')}
+            className="flex flex-col hover:opacity-80 transition-opacity cursor-pointer"
+          >
             <span className="text-xl font-bold text-foreground" data-testid="text-brand-name">SerrariEd</span>
             <span className="text-xs text-muted-foreground">Professional Test Prep</span>
-          </div>
+          </button>
         </div>
         
         <nav className="flex items-center space-x-6">

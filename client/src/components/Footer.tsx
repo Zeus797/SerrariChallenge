@@ -52,11 +52,9 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/study-guides/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-study-guides">Study Guides</Button></li>
-              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/practice-tests/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-practice-tests">Practice Tests</Button></li>
+              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-study-guides">Study Guides</Button></li>
+              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-practice-tests">Practice Tests</Button></li>
               <li><Button onClick={() => handleResourceClick('https://www.youtube.com/@SerrariGroup')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-video-courses">Video Courses</Button></li>
-              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/flashcards/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-flashcards">Flashcards</Button></li>
-              <li><Button onClick={() => handleResourceClick('https://learn.serrarigroup.com/mobile-app/')} variant="ghost" className="p-0 h-auto text-muted-foreground justify-start" data-testid="link-mobile-app">Mobile App</Button></li>
             </ul>
           </div>
           
