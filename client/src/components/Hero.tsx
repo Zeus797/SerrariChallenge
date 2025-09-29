@@ -19,12 +19,11 @@ export default function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
       </div>
-      
       {/* Content */}
       <div className="relative z-10 container max-w-4xl text-center text-white">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
           Master Your 
-          <span className="text-chart-2 block">Professional Exams</span>
+          <span className="block text-[#de23c6]">Professional Exams</span>
         </h1>
         
         <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
