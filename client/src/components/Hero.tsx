@@ -44,6 +44,7 @@ export default function Hero() {
             size="lg" 
             variant="outline" 
             className="text-lg px-8 py-4 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+            onClick={() => window.open('https://learn.serrarigroup.com/', '_blank', 'noopener,noreferrer')}
             data-testid="button-learn-more"
           >
             Learn More

@@ -8,7 +8,7 @@ import {
 import { Moon, Sun, ChevronDown } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { useLocation } from 'wouter';
-import serrariLogo from '@assets/Serrari Logo Text Free_1758731330809.jpeg';
+import serrariLogo from '@assets/Serrari Logo Text Free_1759182390111.png';
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -86,6 +86,7 @@ export default function Header() {
           <Button
             variant="ghost"
             className="text-sm font-medium"
+            onClick={() => window.location.href = 'mailto:learn@serrarigroup.com'}
             data-testid="link-contact"
           >
             Contact
