@@ -9,7 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 
 interface EmailCaptureModalProps {
   isOpen: boolean;
-  onEmailSubmit: (email: string) => void;
+  onEmailSubmit: (email: string) => Promise<void>;
   courseName: string;
   score: number;
   totalQuestions: number;
@@ -49,11 +49,16 @@ export default function EmailCaptureModal({
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      onEmailSubmit(email);
+    try {
+      await onEmailSubmit(email);
+    } catch (error) {
       setIsSubmitting(false);
-    }, 500);
+      toast({
+        title: 'Failed to Save Email',
+        description: 'There was an error saving your email. Please try again.',
+        variant: 'destructive'
+      });
+    }
   };
 
   const scorePercentage = Math.round((score / totalQuestions) * 100);

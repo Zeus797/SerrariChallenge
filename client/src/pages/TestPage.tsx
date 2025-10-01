@@ -889,30 +889,27 @@ export default function TestPage() {
   const handleEmailSubmit = async (email: string) => {
     if (!testSession) return;
     
-    const percentage = Math.round((testSession.score / testSession.questions.length) * 100);
-    
     try {
       await apiRequest('POST', '/api/email-captures', {
         email,
         courseId,
         courseName,
         score: testSession.score,
-        totalQuestions: testSession.questions.length,
-        percentage
+        totalQuestions: testSession.questions.length
       });
       
       console.log('Email captured successfully:', email);
+      
+      setUserEmail(email);
+      setShowEmailModal(false);
+      
+      setTestSession({
+        ...testSession,
+        completed: true
+      });
     } catch (error) {
       console.error('Failed to save email:', error);
     }
-    
-    setUserEmail(email);
-    setShowEmailModal(false);
-    
-    setTestSession({
-      ...testSession,
-      completed: true
-    });
   };
 
   const handleRetakeTest = () => {
