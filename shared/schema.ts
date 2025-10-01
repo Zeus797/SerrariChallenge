@@ -36,6 +36,17 @@ export const testResults = pgTable("test_results", {
   shareId: varchar("share_id").unique(),
 });
 
+export const emailCaptures = pgTable("email_captures", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  email: text("email").notNull(),
+  courseId: varchar("course_id").notNull(),
+  courseName: text("course_name").notNull(),
+  score: integer("score").notNull(),
+  totalQuestions: integer("total_questions").notNull(),
+  percentage: integer("percentage").notNull(),
+  capturedAt: timestamp("captured_at").defaultNow(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -55,6 +66,11 @@ export const insertTestResultSchema = createInsertSchema(testResults).omit({
   shareId: true,
 });
 
+export const insertEmailCaptureSchema = createInsertSchema(emailCaptures).omit({
+  id: true,
+  capturedAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type Course = typeof courses.$inferSelect;
@@ -63,6 +79,8 @@ export type Question = typeof questions.$inferSelect;
 export type InsertQuestion = z.infer<typeof insertQuestionSchema>;
 export type TestResult = typeof testResults.$inferSelect;
 export type InsertTestResult = z.infer<typeof insertTestResultSchema>;
+export type EmailCapture = typeof emailCaptures.$inferSelect;
+export type InsertEmailCapture = z.infer<typeof insertEmailCaptureSchema>;
 
 // Frontend types for test flow
 export type TestQuestion = {

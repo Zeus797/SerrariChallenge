@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { TestSession, TestQuestion as TestQuestionType } from '@shared/schema';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { apiRequest } from '@/lib/queryClient';
 
 // todo: remove mock functionality - replace with real data from backend
 const mockQuestions: Record<string, TestQuestionType[]> = {
@@ -885,16 +886,33 @@ export default function TestPage() {
     }
   };
 
-  const handleEmailSubmit = (email: string) => {
+  const handleEmailSubmit = async (email: string) => {
+    if (!testSession) return;
+    
+    const percentage = Math.round((testSession.score / testSession.questions.length) * 100);
+    
+    try {
+      await apiRequest('POST', '/api/email-captures', {
+        email,
+        courseId,
+        courseName,
+        score: testSession.score,
+        totalQuestions: testSession.questions.length,
+        percentage
+      });
+      
+      console.log('Email captured successfully:', email);
+    } catch (error) {
+      console.error('Failed to save email:', error);
+    }
+    
     setUserEmail(email);
     setShowEmailModal(false);
     
-    if (testSession) {
-      setTestSession({
-        ...testSession,
-        completed: true
-      });
-    }
+    setTestSession({
+      ...testSession,
+      completed: true
+    });
   };
 
   const handleRetakeTest = () => {
