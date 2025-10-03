@@ -1,6 +1,7 @@
 import { users, emailCaptures, type User, type InsertUser, type EmailCapture, type InsertEmailCapture } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
+import 'dotenv/config';
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;

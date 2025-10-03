@@ -1,50 +1,50 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, integer, jsonb, timestamp } from "drizzle-orm/pg-core";
+import { sqliteTable, text, integer, blob } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const users = pgTable("users", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+export const users = sqliteTable("users", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
 });
 
-export const courses = pgTable("courses", {
-  id: varchar("id").primaryKey(),
+export const courses = sqliteTable("courses", {
+  id: text("id").primaryKey(),
   name: text("name").notNull(),
   description: text("description").notNull(),
   icon: text("icon").notNull(),
 });
 
-export const questions = pgTable("questions", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  courseId: varchar("course_id").notNull(),
+export const questions = sqliteTable("questions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  courseId: text("course_id").notNull(),
   question: text("question").notNull(),
-  options: jsonb("options").notNull(), // string[]
+  options: text("options").notNull(), // JSON string of string[]
   correctAnswer: integer("correct_answer").notNull(),
   explanation: text("explanation").notNull(),
   topic: text("topic").notNull(),
 });
 
-export const testResults = pgTable("test_results", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  courseId: varchar("course_id").notNull(),
+export const testResults = sqliteTable("test_results", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  courseId: text("course_id").notNull(),
   score: integer("score").notNull(),
   totalQuestions: integer("total_questions").notNull(),
-  answers: jsonb("answers").notNull(), // { questionId: string, selectedAnswer: number, correct: boolean }[]
-  completedAt: timestamp("completed_at").defaultNow(),
-  shareId: varchar("share_id").unique(),
+  answers: text("answers").notNull(), // JSON string
+  completedAt: integer("completed_at", { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  shareId: text("share_id").unique(),
 });
 
-export const emailCaptures = pgTable("email_captures", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+export const emailCaptures = sqliteTable("email_captures", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
   email: text("email").notNull(),
-  courseId: varchar("course_id").notNull(),
+  courseId: text("course_id").notNull(),
   courseName: text("course_name").notNull(),
   score: integer("score").notNull(),
   totalQuestions: integer("total_questions").notNull(),
   percentage: integer("percentage").notNull(),
-  capturedAt: timestamp("captured_at").defaultNow(),
+  capturedAt: integer("captured_at", { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 
 export const insertUserSchema = createInsertSchema(users).pick({
