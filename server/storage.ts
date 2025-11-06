@@ -1,6 +1,6 @@
-import { users, emailCaptures, type User, type InsertUser, type EmailCapture, type InsertEmailCapture } from "@shared/schema";
+import { users, emailCaptures, testResults, type User, type InsertUser, type EmailCapture, type InsertEmailCapture, type TestResult } from "@shared/schema";
 import { db } from "./db";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import 'dotenv/config';
 
 export interface IStorage {
@@ -10,6 +10,7 @@ export interface IStorage {
   createEmailCapture(emailCapture: InsertEmailCapture): Promise<EmailCapture>;
   getEmailCapturesByEmail(email: string): Promise<EmailCapture[]>;
   getAllEmailCaptures(): Promise<EmailCapture[]>;
+  getAllTestResults(): Promise<TestResult[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -44,7 +45,11 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getAllEmailCaptures(): Promise<EmailCapture[]> {
-    return await db.select().from(emailCaptures);
+    return await db.select().from(emailCaptures).orderBy(desc(emailCaptures.capturedAt));
+  }
+
+  async getAllTestResults(): Promise<TestResult[]> {
+    return await db.select().from(testResults).orderBy(desc(testResults.completedAt));
   }
 }
 
