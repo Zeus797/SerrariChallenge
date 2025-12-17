@@ -53,9 +53,14 @@ export default function EmailCaptureModal({
       await onEmailSubmit(email);
       setIsSubmitting(false);
       toast({
-        title: 'Success!',
-        description: 'Your results are ready. Check your email for the detailed report.',
+        title: 'Thank you!',
+        description: 'Your results have been saved. Explore more courses on our platform.',
       });
+
+      // Redirect to Serrari Group website after a short delay
+      setTimeout(() => {
+        window.location.href = 'https://learn.serrarigroup.com';
+      }, 2000);
     } catch (error) {
       setIsSubmitting(false);
       toast({
