@@ -48,9 +48,14 @@ export default function EmailCaptureModal({
     }
 
     setIsSubmitting(true);
-    
+
     try {
       await onEmailSubmit(email);
+      setIsSubmitting(false);
+      toast({
+        title: 'Success!',
+        description: 'Your results are ready. Check your email for the detailed report.',
+      });
     } catch (error) {
       setIsSubmitting(false);
       toast({
