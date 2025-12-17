@@ -112,29 +112,11 @@ export default function EmailCaptureModal({
           <div className="text-center mb-6">
             <div className="flex items-center justify-center space-x-2 mb-3">
               <Mail className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold text-foreground">Get Your Detailed Results</h3>
+              <h3 className="text-lg font-semibold text-foreground">Stay Connected</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Enter your email to unlock your comprehensive performance report with:
+              Enter your email to save your results and explore more courses on our platform
             </p>
-            <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <BookOpen className="h-3 w-3" />
-                <span>Question-by-question analysis</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <BarChart3 className="h-3 w-3" />
-                <span>Performance breakdown</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Star className="h-3 w-3" />
-                <span>Study recommendations</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Trophy className="h-3 w-3" />
-                <span>Comparison insights</span>
-              </div>
-            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -159,12 +141,12 @@ export default function EmailCaptureModal({
               disabled={isSubmitting}
               data-testid="button-submit-email"
             >
-              {isSubmitting ? 'Processing...' : 'View My Results →'}
+{isSubmitting ? 'Processing...' : 'Continue to Platform →'}
             </Button>
           </form>
 
           <p className="text-xs text-muted-foreground text-center mt-4">
-            We respect your privacy. Your email will only be used to send you your test results and relevant study resources.
+            We respect your privacy. Your email will only be used to save your results and send you relevant study resources.
           </p>
         </div>
       </DialogContent>

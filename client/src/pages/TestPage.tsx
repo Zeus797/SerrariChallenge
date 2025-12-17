@@ -921,8 +921,8 @@ export default function TestPage() {
 
   const handleShareResults = (shareData: any) => {
     console.log('Sharing results:', shareData);
-    // todo: implement sharing functionality
-    alert('Sharing functionality will be implemented in the full version!');
+    // Redirect to main platform to explore more courses
+    window.location.href = 'https://learn.serrarigroup.com';
   };
 
   const handleReturnHome = () => {

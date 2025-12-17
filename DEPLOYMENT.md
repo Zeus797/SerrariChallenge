@@ -31,7 +31,7 @@ This guide will walk you through deploying your application to AWS Lightsail - t
    - **HTTP** (Port 80) - Already added by default
    - **HTTPS** (Port 443) - Click "Add rule" → HTTPS
    - **SSH** (Port 22) - Already added by default
-3. Note down your **Static IP address** (you'll need this for DNS) -  52.31.31.249
+3. Note down your **Static IP address** (you'll need this for DNS) -  46.137.131.224
 4. If you don't see a static IP:
    - Go to **"Networking"** tab
    - Click **"Create static IP"**
@@ -126,6 +126,8 @@ PORT=3000
 # Generate a secure admin key
 # Run: openssl rand -hex 32
 ADMIN_API_KEY=REPLACE_WITH_SECURE_RANDOM_KEY
+
+51b50124f698dfad90de7b60ba3fbba2f398079fe9e2f7ad993b9f818c427508
 ```
 
 To generate a secure admin key:
